@@ -334,9 +334,10 @@ section h3.section-subheading {
 #portfolio .portfolio-item .portfolio-link {
   display: block;
   position: relative;
-  max-width: 400px;
-  max-height: 289px;
   margin: 0 auto;
+}
+#portfolio .portfolio-item .portfolio-link img {
+  max-width: 100%;
 }
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
   background: rgba(254, 209, 54, 0.9);
@@ -422,9 +423,6 @@ section h3.section-subheading {
   clear: both;
 }
 .timeline > li .timeline-panel {
-  margin-left: -50px;
-  width: 100%;
-  float: right;
   padding: 0 20px 0 100px;
   position: relative;
   text-align: left;
@@ -460,7 +458,6 @@ section h3.section-subheading {
   line-height: 14px;
 }
 .timeline > li.timeline-inverted > .timeline-panel {
-  margin-right: -50px;
   float: right;
   text-align: left;
   padding: 0 20px 0 100px;
@@ -500,6 +497,7 @@ section h3.section-subheading {
     min-height: 100px;
   }
   .timeline > li .timeline-panel {
+    margin-left: -50px;
     width: 41%;
     float: left;
     padding: 0 20px 20px 30px;
@@ -517,6 +515,7 @@ section h3.section-subheading {
     line-height: 18px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
+    margin-right: -50px;
     float: right;
     text-align: left;
     padding: 0 30px 20px 20px;
@@ -548,6 +547,7 @@ section h3.section-subheading {
     min-height: 170px;
   }
   .timeline > li .timeline-panel {
+    margin-left: -150px;
     padding: 0 20px 20px 100px;
   }
   .timeline > li .timeline-image {
@@ -559,6 +559,7 @@ section h3.section-subheading {
     margin-top: 40px;
   }
   .timeline > li.timeline-inverted > .timeline-panel {
+    margin-right: -150px;
     padding: 0 100px 20px 20px;
   }
 }
@@ -568,6 +569,7 @@ section h3.section-subheading {
 }
 .team-member img {
   margin: 0 auto;
+  width: 200px;
   border: 7px solid white;
 }
 .team-member h4 {
@@ -780,4 +782,12 @@ body {
 }
 .text-center {
   text-align: center;
+}
+.img-circle {
+  border-radius: 50%;
+}
+.disabled {
+  pointer-events: none;
+  cursor: default;
+  background-color: #ccc !important;
 }

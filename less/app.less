@@ -287,9 +287,10 @@ section {
         .portfolio-link {
             display: block;
             position: relative;
-            max-width: 400px;
-			max-height: 289px;
             margin: 0 auto;
+			img {
+				max-width: 100%;
+			}
             .portfolio-hover {
                 background: fade(@theme-primary, 90%);
                 position: absolute;
@@ -381,9 +382,6 @@ section {
             clear: both;
         }
         .timeline-panel {
-			margin-left: -50px;
-            width: 100%;
-            float: right;
             padding: 0 20px 0 100px;
             position: relative;
             text-align: left;
@@ -419,7 +417,6 @@ section {
             }
         }
         &.timeline-inverted > .timeline-panel {
-			margin-right: -50px;
             float: right;
             text-align: left;
             padding: 0 20px 0 100px;
@@ -466,6 +463,7 @@ section {
             margin-bottom: 100px;
             min-height: 100px;
             .timeline-panel {
+				margin-left: -50px;
                 width: 41%;
                 float: left;
                 padding: 0 20px 20px 30px;
@@ -483,6 +481,7 @@ section {
                 }
             }
             &.timeline-inverted > .timeline-panel {
+				margin-right: -50px;
                 float: right;
                 text-align: left;
                 padding: 0 30px 20px 20px;
@@ -520,6 +519,7 @@ section {
         > li {
             min-height: 170px;
             .timeline-panel {
+				margin-left: -150px;
                 padding: 0 20px 20px 100px;
             }
             .timeline-image {
@@ -531,6 +531,7 @@ section {
                 }
             }
             &.timeline-inverted > .timeline-panel {
+				margin-right: -150px;
                 padding: 0 100px 20px 20px;
             }
         }
@@ -544,6 +545,7 @@ section {
     margin-bottom: 50px;
     img {
         margin: 0 auto;
+		width: 200px;
         border: 7px solid white;
     }
     h4 {
@@ -775,4 +777,14 @@ body {
 
 .text-center {
 	text-align: center;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	background-color: #ccc !important;
 }
