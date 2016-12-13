@@ -31,6 +31,7 @@ a:focus,
 a:active,
 a.active {
     outline: none;
+	text-decoration: none;
 }
 
 a {
@@ -75,7 +76,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     border-radius: 3px;
     font-size: 18px;
-    padding: 20px 40px;
+ //   padding: 20px 40px;
 }
 
 // Custom Navigation Bar
@@ -105,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
         border-color: fade(white, 2%);
     }
     .navbar-toggle {
-		display: none;
         background-color: @theme-primary;
         border-color: @theme-primary;
         .heading-font;
@@ -117,6 +117,8 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
     .nav {
+		margin-top: 15px;
+		margin-bottom: 15px;
 		list-style: none;
 		float: right;
         li {
@@ -151,8 +153,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media(min-width:768px) {
     .navbar-custom {
-        background-color: transparent;
-        padding: 25px 0;
         -webkit-transition: padding 0.3s;
         -moz-transition: padding 0.3s;
         transition: padding 0.3s;
@@ -166,7 +166,20 @@ h1, h2, h3, h4, h5, h6 {
         .navbar-nav>.active>a {
             border-radius: 3px;
         }
+    	.navbar-toggle {
+			display:none;
+		}
     }
+}
+
+// Header margin top
+header {
+	margin-top: 100px;
+}	
+@media(min-width:555px) {
+	header {
+		margin-top: 65px;
+	}	
 }
 
 // Navbar Change on Scroll
@@ -182,6 +195,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
+	z-index: 2000;
     background-image: url('../img/desktop-bg.jpg');
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -274,6 +288,7 @@ section {
             display: block;
             position: relative;
             max-width: 400px;
+			max-height: 289px;
             margin: 0 auto;
             .portfolio-hover {
                 background: fade(@theme-primary, 90%);
@@ -366,6 +381,7 @@ section {
             clear: both;
         }
         .timeline-panel {
+			margin-left: -50px;
             width: 100%;
             float: right;
             padding: 0 20px 0 100px;
@@ -403,6 +419,7 @@ section {
             }
         }
         &.timeline-inverted > .timeline-panel {
+			margin-right: -50px;
             float: right;
             text-align: left;
             padding: 0 20px 0 100px;
@@ -620,8 +637,11 @@ footer {
 // Social Buttons
 
 ul.social-buttons {
+	list-style: none;
     margin-bottom: 0;
     li {
+		display: inline-block;
+		padding-right: 5px;
         a {
             display: block;
             background-color: @gray-darker;
@@ -751,4 +771,8 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: @theme-primary;
+}
+
+.text-center {
+	text-align: center;
 }

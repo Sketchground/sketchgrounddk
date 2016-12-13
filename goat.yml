@@ -1,0 +1,10 @@
+init_tasks:
+ - command: "lessc -i less/app.less -o css/app.css"
+   nowait: true
+
+
+watchers:
+
+ - extension: less
+   tasks:
+   - command: "lessc -i less/app.less -o css/app.css"

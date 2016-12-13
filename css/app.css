@@ -21,6 +21,7 @@ a:focus,
 a:active,
 a.active {
   outline: none;
+  text-decoration: none;
 }
 a {
   color: #fed136;
@@ -103,7 +104,6 @@ fieldset[disabled] .btn-primary.active {
   font-weight: 700;
   border-radius: 3px;
   font-size: 18px;
-  padding: 20px 40px;
 }
 .btn-xl:hover,
 .btn-xl:focus,
@@ -167,7 +167,6 @@ fieldset[disabled] .btn-xl.active {
   border-color: rgba(255, 255, 255, 0.02);
 }
 .navbar-custom .navbar-toggle {
-  display: none;
   background-color: #fed136;
   border-color: #fed136;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -180,6 +179,8 @@ fieldset[disabled] .btn-xl.active {
   background-color: #fed136;
 }
 .navbar-custom .nav {
+  margin-top: 15px;
+  margin-bottom: 15px;
   list-style: none;
   float: right;
 }
@@ -213,8 +214,6 @@ fieldset[disabled] .btn-xl.active {
 }
 @media (min-width: 768px) {
   .navbar-custom {
-    background-color: transparent;
-    padding: 25px 0;
     -webkit-transition: padding 0.3s;
     -moz-transition: padding 0.3s;
     transition: padding 0.3s;
@@ -229,6 +228,17 @@ fieldset[disabled] .btn-xl.active {
   .navbar-custom .navbar-nav > .active > a {
     border-radius: 3px;
   }
+  .navbar-custom .navbar-toggle {
+    display: none;
+  }
+}
+header {
+  margin-top: 100px;
+}
+@media (min-width: 555px) {
+  header {
+    margin-top: 65px;
+  }
 }
 @media (min-width: 768px) {
   .navbar-custom.affix {
@@ -240,6 +250,7 @@ fieldset[disabled] .btn-xl.active {
   }
 }
 header {
+  z-index: 2000;
   background-image: url('../img/desktop-bg.jpg');
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -324,6 +335,7 @@ section h3.section-subheading {
   display: block;
   position: relative;
   max-width: 400px;
+  max-height: 289px;
   margin: 0 auto;
 }
 #portfolio .portfolio-item .portfolio-link .portfolio-hover {
@@ -410,6 +422,7 @@ section h3.section-subheading {
   clear: both;
 }
 .timeline > li .timeline-panel {
+  margin-left: -50px;
   width: 100%;
   float: right;
   padding: 0 20px 0 100px;
@@ -447,6 +460,7 @@ section h3.section-subheading {
   line-height: 14px;
 }
 .timeline > li.timeline-inverted > .timeline-panel {
+  margin-right: -50px;
   float: right;
   text-align: left;
   padding: 0 20px 0 100px;
@@ -640,7 +654,12 @@ footer ul.quicklinks {
   text-transform: none;
 }
 ul.social-buttons {
+  list-style: none;
   margin-bottom: 0;
+}
+ul.social-buttons li {
+  display: inline-block;
+  padding-right: 5px;
 }
 ul.social-buttons li a {
   display: block;
@@ -758,4 +777,7 @@ img::-moz-selection {
 }
 body {
   webkit-tap-highlight-color: #fed136;
+}
+.text-center {
+  text-align: center;
 }
