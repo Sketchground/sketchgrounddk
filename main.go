@@ -21,10 +21,16 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		tmpl.Execute(w, nil)
+		err = tmpl.Execute(w, nil)
+		if err != nil {
+			panic(err)
+		}
 	})
 
 	http.Handle("/", http.FileServer(http.Dir(".")))
 	fmt.Println("Serving on :8080")
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		panic(err)
+	}
 }
