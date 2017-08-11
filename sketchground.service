@@ -1,0 +1,17 @@
+[Unit]
+Description=sketchground website service
+
+[Service]
+User=www-data
+Group=www-data
+
+WorkingDirectory=/var/www/sketchgrounddk
+
+Restart=on-failure
+
+EnvironmentFile=/etc/sketchground.conf
+
+/ExecStart=/usr/local/bin/sketchground
+
+[Install]
+WantedBy=multi-user.target
