@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 )
 
+// SlackMsg represents the content of the slack message sent when contact us if filled out
 type SlackMsg struct {
 	Text string `json:"text"`
 }
@@ -22,11 +24,6 @@ func main() {
 			phone := r.FormValue("Phone")
 			message := r.FormValue("Message")
 
-			// url for webhook to slack...
-			// https://hooks.slack.com/services/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
-			// curl -X POST --data-urlencode 'payload={"channel": "#websitecontacts", "username": "webhookbot", "text": "This is posted to #websitecontacts and comes from a bot named webhookbot.", "icon_emoji": ":ghost:"}' https://hooks.slack.com/services/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
-
-			// payload={"text": "A very important thing has occurred! <https://alert-system.com/alerts/1234|Click here> for details!"}
 			data := bytes.NewBuffer(nil)
 			enc := json.NewEncoder(data)
 
@@ -37,7 +34,12 @@ func main() {
 				panic(err)
 			}
 
-			resp, err := http.Post("https://hooks.slack.com/services/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", "application/json", data)
+			hookURL := os.Getenv("SG_SLACK_HOOK")
+			if hookURL == "" {
+				panic("Set SG_SLACK_HOOK environment variable to a valid slack url")
+			}
+
+			resp, err := http.Post(hookURL, "application/json", data)
 			if err != nil {
 				panic(err)
 			}
