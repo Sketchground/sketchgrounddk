@@ -1,0 +1,67 @@
+# Supfile for sketchgrounddk
+---
+version: 0.4
+
+
+networks: #Groups of hosts
+  dev:
+    env:
+      SGBUILD: DEVEL
+    hosts:
+      - localhost
+  release:
+    env:
+      SGBUILD: RELEASE
+      GOOS: linux
+      GOARCH: amd64
+    hosts:
+      - jzs@sketchground.dk:999
+
+commands:
+  clean:
+    desc: Clean dist folder
+    local: rm -rf dist-sketchground
+
+  dist: # We always build on local machine
+    desc: Build a version that can be distributed
+    local: ./release.sh 
+
+  upload:
+    desc: Upload
+    upload:
+      - src: ./dist-sketchground
+        dst: /tmp/
+
+  copy-bin:
+    desc: Copy binary
+    run: cp /tmp/dist-sketchground/sketchground /usr/local/bin/sketchground
+
+  copy-www:
+    desc: Copy www-data
+    run: cp -r /tmp/dist-sketchground/www/* /var/www/sketchground/
+
+  restart-service:
+    desc: Restart systemd service
+    run: sudo systemctl restart sketchground.service
+
+  start-service:
+    desc: Start systemd service
+    run: sudo systemctl start sketchground.service
+
+  stop-service:
+    desc: Stop systemd service
+    run: sudo systemctl stop sketchground.service
+
+targets:
+  rebuild:
+    - clean
+    - dist
+
+  deploy:
+    - clean
+    - dist
+    - upload
+    - copy-www
+    - stop-service
+    - copy-bin
+    - start-service
