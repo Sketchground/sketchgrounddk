@@ -38,7 +38,7 @@ commands:
 
   copy-www:
     desc: Copy www-data
-    run: cp -r /tmp/dist-sketchground/www/* /var/www/sketchground/
+    run: cp -r /tmp/dist-sketchground/www/* /var/www/sketchgrounddk/
 
   restart-service:
     desc: Restart systemd service

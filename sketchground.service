@@ -11,7 +11,7 @@ Restart=on-failure
 
 EnvironmentFile=/etc/sketchground.conf
 
-/ExecStart=/usr/local/bin/sketchground
+ExecStart=/usr/local/bin/sketchground
 
 [Install]
 WantedBy=multi-user.target

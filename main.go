@@ -15,6 +15,16 @@ type SlackMsg struct {
 }
 
 func main() {
+	port := os.Getenv("SG_ADDR")
+	if port == "" {
+		port = ":10001"
+	}
+
+	hookURL := os.Getenv("SG_SLACK_HOOK")
+	if hookURL == "" {
+		panic("Set SG_SLACK_HOOK environment variable to a valid slack url")
+	}
+
 	http.HandleFunc("/contact", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" {
 			// read post args,
@@ -32,11 +42,6 @@ func main() {
 			err := enc.Encode(msg)
 			if err != nil {
 				panic(err)
-			}
-
-			hookURL := os.Getenv("SG_SLACK_HOOK")
-			if hookURL == "" {
-				panic("Set SG_SLACK_HOOK environment variable to a valid slack url")
 			}
 
 			resp, err := http.Post(hookURL, "application/json", data)
@@ -60,8 +65,8 @@ func main() {
 	})
 
 	http.Handle("/", http.FileServer(http.Dir(".")))
-	fmt.Println("Serving on :8080")
-	err := http.ListenAndServe(":8080", nil)
+	fmt.Println("Serving on " + port)
+	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		panic(err)
 	}
