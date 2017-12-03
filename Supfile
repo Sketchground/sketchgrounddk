@@ -16,6 +16,14 @@ networks: #Groups of hosts
       GOARCH: amd64
     hosts:
       - jzs@sketchground.dk:999
+  testing:
+    env:
+      SGBUILD: RELEASE
+      GOOS: linux
+      GOARCH: amd64
+    hosts:
+      - jzs@46.101.187.69
+      
 
 commands:
   clean:
@@ -34,11 +42,11 @@ commands:
 
   copy-bin:
     desc: Copy binary
-    run: cp /tmp/dist-sketchground/sketchground /usr/local/bin/sketchground
+    run: sudo cp /tmp/dist-sketchground/sketchground /usr/local/bin/sketchground
 
   copy-www:
     desc: Copy www-data
-    run: cp -r /tmp/dist-sketchground/www/* /var/www/sketchgrounddk/
+    run: sudo mkdir -p /var/www/sketchgrounddk; sudo cp -r /tmp/dist-sketchground/www/* /var/www/sketchgrounddk/
 
   restart-service:
     desc: Restart systemd service
